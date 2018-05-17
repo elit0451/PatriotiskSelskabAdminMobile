@@ -17,6 +17,11 @@
 		3A3EA96020A9AEF1005DA17E /* AddYearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3EA95F20A9AEF1005DA17E /* AddYearViewController.swift */; };
 		3A3EA98520A9F474005DA17E /* yearCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3EA98420A9F474005DA17E /* yearCollectionViewCell.swift */; };
 		3A3EA98920AA05CD005DA17E /* BlockCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3EA98820AA05CD005DA17E /* BlockCollectionViewCell.swift */; };
+		3A7C51E320AD706500871837 /* SubBlockTapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C51E220AD706500871837 /* SubBlockTapHandler.swift */; };
+		3A7C51E520AD7D3600871837 /* SubBlockInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C51E420AD7D3600871837 /* SubBlockInfoViewController.swift */; };
+		3A7C51E720AD7D4D00871837 /* SubBlockTrialGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C51E620AD7D4D00871837 /* SubBlockTrialGroupsViewController.swift */; };
+		3A7C51E920AD871500871837 /* TrialGroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C51E820AD871500871837 /* TrialGroupCollectionViewCell.swift */; };
+		3A7C51EB20ADC72D00871837 /* TrialGroupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C51EA20ADC72D00871837 /* TrialGroupInfoViewController.swift */; };
 		3A99C53E20AC7D2B0019BEE0 /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A99C53C20AC7D220019BEE0 /* DropDown.framework */; };
 		3A99C53F20AC7D2B0019BEE0 /* DropDown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A99C53C20AC7D220019BEE0 /* DropDown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A99C54220ACA65E0019BEE0 /* BlockInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99C54120ACA65E0019BEE0 /* BlockInfoViewController.swift */; };
@@ -56,6 +61,11 @@
 		3A3EA95F20A9AEF1005DA17E /* AddYearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddYearViewController.swift; sourceTree = "<group>"; };
 		3A3EA98420A9F474005DA17E /* yearCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yearCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A3EA98820AA05CD005DA17E /* BlockCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockCollectionViewCell.swift; sourceTree = "<group>"; };
+		3A7C51E220AD706500871837 /* SubBlockTapHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlockTapHandler.swift; sourceTree = "<group>"; };
+		3A7C51E420AD7D3600871837 /* SubBlockInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlockInfoViewController.swift; sourceTree = "<group>"; };
+		3A7C51E620AD7D4D00871837 /* SubBlockTrialGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubBlockTrialGroupsViewController.swift; sourceTree = "<group>"; };
+		3A7C51E820AD871500871837 /* TrialGroupCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialGroupCollectionViewCell.swift; sourceTree = "<group>"; };
+		3A7C51EA20ADC72D00871837 /* TrialGroupInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialGroupInfoViewController.swift; sourceTree = "<group>"; };
 		3A99C53C20AC7D220019BEE0 /* DropDown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropDown.framework; sourceTree = "<group>"; };
 		3A99C54120ACA65E0019BEE0 /* BlockInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockInfoViewController.swift; sourceTree = "<group>"; };
 		3A99C54320ACA6830019BEE0 /* BlockSubBlocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockSubBlocksViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +127,11 @@
 				3A3EA95120A9AD04005DA17E /* BlockViewController.swift */,
 				3A99C54120ACA65E0019BEE0 /* BlockInfoViewController.swift */,
 				3A99C54320ACA6830019BEE0 /* BlockSubBlocksViewController.swift */,
+				3A7C51E220AD706500871837 /* SubBlockTapHandler.swift */,
 				3A3EA95320A9AD37005DA17E /* SubBlockViewController.swift */,
+				3A7C51E420AD7D3600871837 /* SubBlockInfoViewController.swift */,
+				3A7C51E620AD7D4D00871837 /* SubBlockTrialGroupsViewController.swift */,
+				3A7C51E820AD871500871837 /* TrialGroupCollectionViewCell.swift */,
 				3A3EA95520A9AD49005DA17E /* TrialGroupViewController.swift */,
 				3AF8AFDD20A5DFB300D495B7 /* Main.storyboard */,
 				3AF8AFE020A5DFB300D495B7 /* Assets.xcassets */,
@@ -130,6 +144,7 @@
 				3A3EA95920A9AD88005DA17E /* AddSubBlockViewController.swift */,
 				3A3EA95B20A9AD9A005DA17E /* AddTrialGroupViewController.swift */,
 				3A3EA95F20A9AEF1005DA17E /* AddYearViewController.swift */,
+				3A7C51EA20ADC72D00871837 /* TrialGroupInfoViewController.swift */,
 				3A3EA98420A9F474005DA17E /* yearCollectionViewCell.swift */,
 				3A3EA98820AA05CD005DA17E /* BlockCollectionViewCell.swift */,
 			);
@@ -213,19 +228,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A99C54220ACA65E0019BEE0 /* BlockInfoViewController.swift in Sources */,
+				3A7C51E920AD871500871837 /* TrialGroupCollectionViewCell.swift in Sources */,
 				3AF8AFDC20A5DFB300D495B7 /* MainViewController.swift in Sources */,
 				3A3EA95620A9AD49005DA17E /* TrialGroupViewController.swift in Sources */,
 				3A3EA95820A9AD7A005DA17E /* AddBlockViewController.swift in Sources */,
 				3AF8AFDA20A5DFB300D495B7 /* AppDelegate.swift in Sources */,
 				3A3EA95E20A9AE78005DA17E /* YearViewController.swift in Sources */,
+				3A7C51E520AD7D3600871837 /* SubBlockInfoViewController.swift in Sources */,
 				3A3EA95220A9AD04005DA17E /* BlockViewController.swift in Sources */,
 				3A3EA98920AA05CD005DA17E /* BlockCollectionViewCell.swift in Sources */,
 				3A3EA95A20A9AD88005DA17E /* AddSubBlockViewController.swift in Sources */,
+				3A7C51E320AD706500871837 /* SubBlockTapHandler.swift in Sources */,
 				3A3EA95420A9AD37005DA17E /* SubBlockViewController.swift in Sources */,
 				3A3EA98520A9F474005DA17E /* yearCollectionViewCell.swift in Sources */,
 				3A99C54420ACA6830019BEE0 /* BlockSubBlocksViewController.swift in Sources */,
 				3A3EA95C20A9AD9A005DA17E /* AddTrialGroupViewController.swift in Sources */,
 				3A3EA96020A9AEF1005DA17E /* AddYearViewController.swift in Sources */,
+				3A7C51E720AD7D4D00871837 /* SubBlockTrialGroupsViewController.swift in Sources */,
+				3A7C51EB20ADC72D00871837 /* TrialGroupInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

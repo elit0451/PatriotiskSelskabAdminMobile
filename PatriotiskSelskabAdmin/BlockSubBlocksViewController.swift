@@ -29,14 +29,14 @@ class BlockSubBlocksViewController: UIViewController {
         var cellHeight = (subBlock.bounds.height as! NSNumber).intValue
         
         for sBlock in subBlocks {
-            let subBlockChar = "A"
+            let subBlockChar = sBlock["SubBlockChar"] as! String
             let posX = (sBlock["PosW"] as! Int) * cellWidth  / (selectedBlock["FieldBlockWidth"] as! Int) + 5
             let posY = (sBlock["PosL"] as! Int) * cellHeight / (selectedBlock["FieldBlockLength"] as! Int) + 5
             let subBlockWidth = (sBlock["SubBlockWidth"] as! Int) * cellWidth / (selectedBlock["FieldBlockWidth"] as! Int) - 10
             let subBlockLength = (sBlock["SubBlockLength"] as! Int) * cellHeight / (selectedBlock["FieldBlockLength"] as! Int) - 10
             
             let fieldRect:CGRect = CGRect.init(x: posX, y: posY, width: subBlockWidth, height: subBlockLength)
-            let subBlockCell = UIView(frame: fieldRect)
+            let subBlockCell = SubBlockTapHandler(frame: fieldRect)
             subBlockCell.backgroundColor = UIColor.init(red: 0.945, green: 1, blue: 0.953, alpha: 1)
             subBlockCell.layer.borderColor = UIColor.init(red:0.58, green:0.60, blue:0.60, alpha:1.0).cgColor
             subBlockCell.layer.borderWidth = 1
@@ -48,6 +48,14 @@ class BlockSubBlocksViewController: UIViewController {
             char.transform = CGAffineTransform(rotationAngle: 0.5 * CGFloat.pi)
             char.center = CGPoint.init(x: subBlockCell.bounds.width/2, y: subBlockCell.bounds.height/2  + 8)
             subBlockCell.addSubview(char)
+            
+            let tap = UITapGestureRecognizer(target: subBlockCell, action: #selector(subBlockCell.handleTap(sender:)))
+            tap.delegate = subBlockCell
+            subBlockCell.addGestureRecognizer(tap)
+            
+            subBlockCell.subBlock = sBlock
+            subBlockCell.blockSubBlockCtrl = self
+            
             subBlock.addSubview(subBlockCell)
         }
         
@@ -60,17 +68,14 @@ class BlockSubBlocksViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func changeView(sBlock:[String:Any]){
+        let sb = UIStoryboard(name: "Main", bundle: nil);
+        let vc = sb.instantiateViewController(withIdentifier: "SubBlockView") as! SubBlockViewController
+        vc.selectedSubBlock = sBlock
+        
+        
+        self.present(vc, animated: true, completion: nil)
+    }
     
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
