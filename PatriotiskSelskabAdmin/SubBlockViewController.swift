@@ -8,14 +8,29 @@
 
 import UIKit
 
-class SubBlockViewController: UIPageViewController {
+class SubBlockViewController: UIPageViewController, UIPageViewControllerDataSource {
+    
+    lazy var viewControllerList:[UIViewController] = {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let viewInfo = storyBoard.instantiateViewController(withIdentifier: "SubBlockInfo")
+        let viewTrialGroups = storyBoard.instantiateViewController(withIdentifier: "SubBlockTrialGroups")
+        
+        return [viewInfo, viewTrialGroups]
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.dataSource = self
+        
+        if let firstViewController = viewControllerList.first {
+            self.setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
+        }
     }
-
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -25,5 +40,24 @@ class SubBlockViewController: UIPageViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        
+        guard let vcIndex = viewControllerList.index(of: viewController) else {return nil}
+        let previousIndex = vcIndex - 1
+        guard previousIndex >= 0 else {return nil}
+        guard viewControllerList.count > previousIndex else {return nil}
+        
+        return viewControllerList[previousIndex]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        
+        guard let vcIndex = viewControllerList.index(of: viewController) else {return nil}
+        let nextIndex = vcIndex + 1
+        guard viewControllerList.count != nextIndex else {return nil}
+        guard viewControllerList.count > nextIndex else {return nil}
+        
+        return viewControllerList[nextIndex]
+    }
 }

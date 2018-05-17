@@ -15,10 +15,12 @@
 		3A3EA95C20A9AD9A005DA17E /* AddTrialGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3EA95B20A9AD9A005DA17E /* AddTrialGroupViewController.swift */; };
 		3A3EA95E20A9AE78005DA17E /* YearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3EA95D20A9AE78005DA17E /* YearViewController.swift */; };
 		3A3EA96020A9AEF1005DA17E /* AddYearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3EA95F20A9AEF1005DA17E /* AddYearViewController.swift */; };
-		3A3EA98120A9B735005DA17E /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A3EA97920A9B5AF005DA17E /* DropDown.framework */; };
-		3A3EA98220A9B735005DA17E /* DropDown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A3EA97920A9B5AF005DA17E /* DropDown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A3EA98520A9F474005DA17E /* yearCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3EA98420A9F474005DA17E /* yearCollectionViewCell.swift */; };
 		3A3EA98920AA05CD005DA17E /* BlockCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3EA98820AA05CD005DA17E /* BlockCollectionViewCell.swift */; };
+		3A99C53E20AC7D2B0019BEE0 /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A99C53C20AC7D220019BEE0 /* DropDown.framework */; };
+		3A99C53F20AC7D2B0019BEE0 /* DropDown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A99C53C20AC7D220019BEE0 /* DropDown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A99C54220ACA65E0019BEE0 /* BlockInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99C54120ACA65E0019BEE0 /* BlockInfoViewController.swift */; };
+		3A99C54420ACA6830019BEE0 /* BlockSubBlocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A99C54320ACA6830019BEE0 /* BlockSubBlocksViewController.swift */; };
 		3AF8AFDA20A5DFB300D495B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8AFD920A5DFB300D495B7 /* AppDelegate.swift */; };
 		3AF8AFDC20A5DFB300D495B7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8AFDB20A5DFB300D495B7 /* MainViewController.swift */; };
 		3AF8AFDF20A5DFB300D495B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF8AFDD20A5DFB300D495B7 /* Main.storyboard */; };
@@ -30,13 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3A3EA98320A9B735005DA17E /* Embed Frameworks */ = {
+		3A99C54020AC7D2B0019BEE0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3A3EA98220A9B735005DA17E /* DropDown.framework in Embed Frameworks */,
+				3A99C53F20AC7D2B0019BEE0 /* DropDown.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,11 +54,11 @@
 		3A3EA95B20A9AD9A005DA17E /* AddTrialGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrialGroupViewController.swift; sourceTree = "<group>"; };
 		3A3EA95D20A9AE78005DA17E /* YearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearViewController.swift; sourceTree = "<group>"; };
 		3A3EA95F20A9AEF1005DA17E /* AddYearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddYearViewController.swift; sourceTree = "<group>"; };
-		3A3EA97520A9B399005DA17E /* DropDown */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DropDown; path = PatriotiskSelskabAdmin/DropDown; sourceTree = "<group>"; };
-		3A3EA97920A9B5AF005DA17E /* DropDown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropDown.framework; path = "/Users/elitsamarinovska/Downloads/XCode projects/PatriotiskSelskabAdmin/PatriotiskSelskabAdmin/DropDown.framework"; sourceTree = "<absolute>"; };
-		3A3EA97B20A9B690005DA17E /* DropDown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropDown.framework; path = ../../Carthage/Build/iOS/DropDown.framework; sourceTree = "<group>"; };
 		3A3EA98420A9F474005DA17E /* yearCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yearCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A3EA98820AA05CD005DA17E /* BlockCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockCollectionViewCell.swift; sourceTree = "<group>"; };
+		3A99C53C20AC7D220019BEE0 /* DropDown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropDown.framework; sourceTree = "<group>"; };
+		3A99C54120ACA65E0019BEE0 /* BlockInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockInfoViewController.swift; sourceTree = "<group>"; };
+		3A99C54320ACA6830019BEE0 /* BlockSubBlocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockSubBlocksViewController.swift; sourceTree = "<group>"; };
 		3AF8AFD620A5DFB300D495B7 /* PatriotiskSelskabAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PatriotiskSelskabAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF8AFD920A5DFB300D495B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AF8AFDB20A5DFB300D495B7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A3EA98120A9B735005DA17E /* DropDown.framework in Frameworks */,
+				3A99C53E20AC7D2B0019BEE0 /* DropDown.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,8 +86,6 @@
 		3A3EA97420A9B399005DA17E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A3EA97B20A9B690005DA17E /* DropDown.framework */,
-				3A3EA97520A9B399005DA17E /* DropDown */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -110,11 +110,15 @@
 		3AF8AFD820A5DFB300D495B7 /* PatriotiskSelskabAdmin */ = {
 			isa = PBXGroup;
 			children = (
-				3A3EA97920A9B5AF005DA17E /* DropDown.framework */,
+				3A99C53C20AC7D220019BEE0 /* DropDown.framework */,
 				3AF8AFD920A5DFB300D495B7 /* AppDelegate.swift */,
 				3AF8AFDB20A5DFB300D495B7 /* MainViewController.swift */,
 				3A3EA95D20A9AE78005DA17E /* YearViewController.swift */,
 				3A3EA95120A9AD04005DA17E /* BlockViewController.swift */,
+				3A99C54120ACA65E0019BEE0 /* BlockInfoViewController.swift */,
+				3A99C54320ACA6830019BEE0 /* BlockSubBlocksViewController.swift */,
+				3A3EA95320A9AD37005DA17E /* SubBlockViewController.swift */,
+				3A3EA95520A9AD49005DA17E /* TrialGroupViewController.swift */,
 				3AF8AFDD20A5DFB300D495B7 /* Main.storyboard */,
 				3AF8AFE020A5DFB300D495B7 /* Assets.xcassets */,
 				3AF8AFEC20A5EAFF00D495B7 /* fa-brands-400.ttf */,
@@ -122,8 +126,6 @@
 				3AF8AFED20A5EAFF00D495B7 /* fa-solid-900.ttf */,
 				3AF8AFE220A5DFB300D495B7 /* LaunchScreen.storyboard */,
 				3AF8AFE520A5DFB300D495B7 /* Info.plist */,
-				3A3EA95320A9AD37005DA17E /* SubBlockViewController.swift */,
-				3A3EA95520A9AD49005DA17E /* TrialGroupViewController.swift */,
 				3A3EA95720A9AD7A005DA17E /* AddBlockViewController.swift */,
 				3A3EA95920A9AD88005DA17E /* AddSubBlockViewController.swift */,
 				3A3EA95B20A9AD9A005DA17E /* AddTrialGroupViewController.swift */,
@@ -144,7 +146,7 @@
 				3AF8AFD220A5DFB300D495B7 /* Sources */,
 				3AF8AFD320A5DFB300D495B7 /* Frameworks */,
 				3AF8AFD420A5DFB300D495B7 /* Resources */,
-				3A3EA98320A9B735005DA17E /* Embed Frameworks */,
+				3A99C54020AC7D2B0019BEE0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -210,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A99C54220ACA65E0019BEE0 /* BlockInfoViewController.swift in Sources */,
 				3AF8AFDC20A5DFB300D495B7 /* MainViewController.swift in Sources */,
 				3A3EA95620A9AD49005DA17E /* TrialGroupViewController.swift in Sources */,
 				3A3EA95820A9AD7A005DA17E /* AddBlockViewController.swift in Sources */,
@@ -220,6 +223,7 @@
 				3A3EA95A20A9AD88005DA17E /* AddSubBlockViewController.swift in Sources */,
 				3A3EA95420A9AD37005DA17E /* SubBlockViewController.swift in Sources */,
 				3A3EA98520A9F474005DA17E /* yearCollectionViewCell.swift in Sources */,
+				3A99C54420ACA6830019BEE0 /* BlockSubBlocksViewController.swift in Sources */,
 				3A3EA95C20A9AD9A005DA17E /* AddTrialGroupViewController.swift in Sources */,
 				3A3EA96020A9AEF1005DA17E /* AddYearViewController.swift in Sources */,
 			);
@@ -359,16 +363,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WYC6AYWKD2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PatriotiskSelskabAdmin",
 				);
 				INFOPLIST_FILE = PatriotiskSelskabAdmin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.elitsamarinovska.PatriotiskSelskabAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -377,16 +383,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WYC6AYWKD2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PatriotiskSelskabAdmin",
 				);
 				INFOPLIST_FILE = PatriotiskSelskabAdmin/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.elitsamarinovska.PatriotiskSelskabAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

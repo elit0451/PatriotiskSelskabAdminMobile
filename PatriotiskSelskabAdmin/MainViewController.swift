@@ -58,7 +58,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     }
                 }
             }
-            self.getData(url:"http://localhost:8000/data/FieldBlocks.json", myCompletionHandler: myCompHand)
+            self.getData(url:"http://192.168.0.13:8000/data/FieldBlocks.json", myCompletionHandler: myCompHand)
         }
         
         blockDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -85,7 +85,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     }
                 }
             }
-            self.getData(url:"http://localhost:8000/data/SubBlocks.json", myCompletionHandler: myCompHand)
+            self.getData(url:"http://192.168.0.13:8000/data/SubBlocks.json", myCompletionHandler: myCompHand)
         }
         
         subBlockDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -114,7 +114,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             }
             
-            self.getData(url:"http://localhost:8000/data/TrialGroups.json", myCompletionHandler: myCompHand)
+            self.getData(url:"http://192.168.0.13:8000/data/TrialGroups.json", myCompletionHandler: myCompHand)
         }
         
         trialGroupDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -146,7 +146,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 self.years.sort(by: { $0 > $1 })
             }
         }
-        getData(url:"http://localhost:8000/data/FieldBlocks.json", myCompletionHandler: myCompHand)
+        getData(url:"http://192.168.0.13:8000/data/FieldBlocks.json", myCompletionHandler: myCompHand)
         
     }
     @IBAction func selectYearClick(_ sender: Any) {
@@ -158,6 +158,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBAction func selectBlockClick(_ sender: Any) {
         blockDropDown.dataSource = []
+        self.blocks.sort { ($0["BlockChar"] as! String) < ($1["BlockChar"] as! String) }
         for block in blocks
         {
             blockDropDown.dataSource.append(block["BlockChar"] as! String)
@@ -168,6 +169,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBAction func selectSubBlockClick(_ sender: Any) {
         subBlockDropDown.dataSource = []
+        self.subBlocks.sort { ($0["SubBlockChar"] as! String) < ($1["SubBlockChar"] as! String) }
+        
         for subBlock in subBlocks
         {
             subBlockDropDown.dataSource.append(subBlock["SubBlockChar"] as! String)
@@ -177,6 +180,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBAction func selectTrialGroupClick(_ sender: Any) {
         trialGroupDropDown.dataSource = []
+        self.trialGroups.sort { ($0["TrialGroupNr"] as! NSNumber).stringValue < ($1["TrialGroupNr"] as! NSNumber).stringValue }
         for trialGroup in trialGroups
         {
             trialGroupDropDown.dataSource.append((trialGroup["TrialGroupNr"] as! NSNumber).stringValue)
@@ -194,7 +198,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -226,6 +230,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         self.present(vc, animated: true, completion: nil)
     }
-
+    
 }
 
