@@ -71,11 +71,13 @@ class TrialGroupViewController: UIViewController {
                 }
                 stage["Products"] = stageProducts
                 var logDosageTxt = ""
+                logDosages.sort(by: { $0 > $1 })
                 for logChemDosage in logDosages{
                     
                     logDosageTxt += (logChemDosage as NSNumber).stringValue + " | "
                 }
-                stage["LogChemTxt"] = logDosageTxt
+                logDosageTxt.removeLast(2)
+                stage["LogChemTxt"] = logDosageTxt + " ml"
                 newStages.append(stage)
             }
             stages = newStages;
@@ -126,8 +128,6 @@ class TrialGroupViewController: UIViewController {
         
         scrollView.contentSize = CGSize(width: 375, height: frameY)
         
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -138,6 +138,9 @@ class TrialGroupViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    @IBAction func didUnwindToTrialGroupView(_ sender: UIStoryboardSegue){
     }
 
 }

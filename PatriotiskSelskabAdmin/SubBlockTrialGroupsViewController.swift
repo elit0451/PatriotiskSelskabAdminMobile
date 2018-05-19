@@ -44,6 +44,7 @@ class SubBlockTrialGroupsViewController: UIViewController, UICollectionViewDeleg
         logDosages += (logChemDosage as NSNumber).stringValue + " | "
         }
         if(logDosages != ""){
+        logDosages.removeLast(2)
         cell.dosages.text = logDosages + " ml"
         }
         else{

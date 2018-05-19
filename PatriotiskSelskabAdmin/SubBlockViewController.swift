@@ -91,7 +91,7 @@ class SubBlockViewController: UIPageViewController, UIPageViewControllerDataSour
             }
             self.getTreatments()
         }
-        self.getData(url:"http://192.168.0.13:8000/data/TrialGroups.json", myCompletionHandler: myCompHand)
+        self.getData(url:"http://localhost:8000/data/TrialGroups.json", myCompletionHandler: myCompHand)
     }
     
     func getTreatments() {
@@ -135,10 +135,11 @@ class SubBlockViewController: UIPageViewController, UIPageViewControllerDataSour
                 }
             }
         }
-        self.getData(url:"http://192.168.0.13:8000/data/Treatment.json", myCompletionHandler: myCompHand)
+        self.getData(url:"http://localhost:8000/data/Treatment.json", myCompletionHandler: myCompHand)
     }
     
-    
+    @IBAction func didUnwindToSubBlockView(_ sender: UIStoryboardSegue){
+    }
     
     
 }

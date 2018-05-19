@@ -23,15 +23,30 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let subBlockDropDown = DropDown()
     let trialGroupDropDown = DropDown()
     
+    var buttonClicked = false
+    var addYearCellAdded = true
+    
     @IBOutlet weak var selectYear: UIButton!
     @IBOutlet weak var selectBlock: UIButton!
     @IBOutlet weak var selectSubBlock: UIButton!
     @IBOutlet weak var selectTrialGroup: UIButton!
     @IBOutlet weak var yearCollection: UICollectionView!
+    @IBAction func editButton(_ sender: Any) {
+        if(buttonClicked == false){
+            buttonClicked = true
+            years.insert("+", at: 0)
+            addYearCellAdded = false
+        }
+        else {
+            buttonClicked = false
+            years.remove(at: 0)
+        }
+        yearCollection.reloadData()
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         yearCollection.delegate = self
         yearCollection.dataSource = self
         
@@ -58,7 +73,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     }
                 }
             }
-            self.getData(url:"http://192.168.0.13:8000/data/FieldBlocks.json", myCompletionHandler: myCompHand)
+            self.getData(url:"http://localhost:8000/data/FieldBlocks.json", myCompletionHandler: myCompHand)
         }
         
         blockDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -85,7 +100,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     }
                 }
             }
-            self.getData(url:"http://192.168.0.13:8000/data/SubBlocks.json", myCompletionHandler: myCompHand)
+            self.getData(url:"http://localhost:8000/data/SubBlocks.json", myCompletionHandler: myCompHand)
         }
         
         subBlockDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -114,7 +129,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             }
             
-            self.getData(url:"http://192.168.0.13:8000/data/TrialGroups.json", myCompletionHandler: myCompHand)
+            self.getData(url:"http://localhost:8000/data/TrialGroups.json", myCompletionHandler: myCompHand)
         }
         
         trialGroupDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -146,7 +161,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 self.years.sort(by: { $0 > $1 })
             }
         }
-        getData(url:"http://192.168.0.13:8000/data/FieldBlocks.json", myCompletionHandler: myCompHand)
+        getData(url:"http://localhost:8000/data/FieldBlocks.json", myCompletionHandler: myCompHand)
         
     }
     @IBAction func selectYearClick(_ sender: Any) {
@@ -215,21 +230,41 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let addYearCell = yearCollection.dequeueReusableCell(withReuseIdentifier: "addYearCell", for: indexPath) as! yearCollectionViewCell
         let cell = yearCollection.dequeueReusableCell(withReuseIdentifier: "yearCell", for: indexPath) as! yearCollectionViewCell
         
-        cell.yearLbl.text = years[indexPath.row] as! String
-        
-        return cell
+        if(buttonClicked == true && addYearCellAdded == false)
+        {
+            addYearCellAdded = true
+            return addYearCell
+            
+        }
+        else{
+            cell.yearLbl.text = years[indexPath.row] as! String
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedCellYear = years[indexPath.row]
-        let sb = UIStoryboard(name: "Main", bundle: nil);
-        let vc = sb.instantiateViewController(withIdentifier: "YearView") as! YearViewController
-        vc.selectedYear = selectedCellYear
+        var selectedCellYear = years[indexPath.row]
         
-        self.present(vc, animated: true, completion: nil)
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        var vc:Any
+        if(buttonClicked == true && indexPath.row == 0){
+            selectedCellYear = String((Int(years[1])! + 1))
+            vc = sb.instantiateViewController(withIdentifier: "AddYearView") as! AddYearViewController
+            (vc as! AddYearViewController).selectedYear  = selectedCellYear
+        }
+        else{
+            vc = sb.instantiateViewController(withIdentifier: "YearView") as! YearViewController
+            (vc as! YearViewController).selectedYear = selectedCellYear
+        }
+        self.present(vc as! UIViewController, animated: true, completion: nil)
+        
+        
     }
     
+    @IBAction func didUnwindToMain(_ sender: UIStoryboardSegue){
+    }
 }
 

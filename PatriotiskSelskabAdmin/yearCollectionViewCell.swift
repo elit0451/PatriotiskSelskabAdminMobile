@@ -10,6 +10,8 @@ import UIKit
 
 class yearCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var bgImage: UILabel!
     @IBOutlet weak var yearLbl: UILabel!
+    @IBOutlet weak var bgImage: UIImageView!
 }
+
+

@@ -13,11 +13,15 @@ class YearViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBOutlet weak var blockCollection: UICollectionView!
     @IBOutlet weak var yearTop: UILabel!
+    @IBAction func backBtn(_ sender: UIButton) {
+        
+    }
     
     var selectedYear = ""
     var selectedBlock = [String:Any]()
     var blocks:[[String:Any]] = []
     var subBlocks = [[String: Any]]()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +48,7 @@ class YearViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 self.getSubBlocks()
             }
         }
-        self.getData(url:"http://192.168.0.13:8000/data/FieldBlocks.json", myCompletionHandler: myCompHand)
+        self.getData(url:"http://localhost:8000/data/FieldBlocks.json", myCompletionHandler: myCompHand)
     }
     
     override func didReceiveMemoryWarning() {
@@ -130,7 +134,10 @@ class YearViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             }
         }
-        self.getData(url:"http://192.168.0.13:8000/data/SubBlocks.json", myCompletionHandler: myCompHand)
+        self.getData(url:"http://localhost:8000/data/SubBlocks.json", myCompletionHandler: myCompHand)
+    }
+    
+    @IBAction func didUnwindToYearView(_ sender: UIStoryboardSegue){
     }
     
 }
