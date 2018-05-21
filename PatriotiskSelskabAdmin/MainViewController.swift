@@ -22,6 +22,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let blockDropDown = DropDown()
     let subBlockDropDown = DropDown()
     let trialGroupDropDown = DropDown()
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var blockLabel: UILabel!
+    @IBOutlet weak var subBlockLabel: UILabel!
+    @IBOutlet weak var trGroupLabel: UILabel!
     
     var buttonClicked = false
     var addYearCellAdded = true
@@ -74,6 +78,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             }
             self.getData(url:"http://localhost:8000/data/FieldBlocks.json", myCompletionHandler: myCompHand)
+            self.yearLabel.text = item
+            self.blockLabel.text = "Block"
+            self.subBlockLabel.text = "Sub-Block"
+            self.trGroupLabel.text = "Trial Group"
         }
         
         blockDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -101,6 +109,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             }
             self.getData(url:"http://localhost:8000/data/SubBlocks.json", myCompletionHandler: myCompHand)
+            self.blockLabel.text = item
+            self.subBlockLabel.text = "Sub-Block"
+            self.trGroupLabel.text = "Trial Group"
         }
         
         subBlockDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -130,6 +141,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             
             self.getData(url:"http://localhost:8000/data/TrialGroups.json", myCompletionHandler: myCompHand)
+            self.subBlockLabel.text = item
+            self.trGroupLabel.text = "Trial Group"
         }
         
         trialGroupDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -140,6 +153,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     self.selectedTrialGroup = (trialGroup["TrialGroupID"] as! NSNumber).intValue
                 }
             }
+            self.trGroupLabel.text = item
         }
         
         let myCompHand:(Data?, URLResponse?, Error?) -> Void = { (data, response, error) in

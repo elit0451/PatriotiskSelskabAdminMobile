@@ -23,6 +23,7 @@ class AddTrialGroupInfoViewController: UIViewController {
     @IBOutlet weak var treatmentCommentView: UIView!
     @IBOutlet weak var productsView: UIView!
     @IBOutlet weak var stageView: UIView!
+    @IBOutlet weak var cropLabel: UILabel!
     
     @IBAction func numberChanged(_ sender: Any) {
         guard let trialGrNr = Int(numberInput.text!) else { return }
@@ -45,6 +46,7 @@ class AddTrialGroupInfoViewController: UIViewController {
         
         cropDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             self.addedTrialGroup.cropName = item
+            self.cropLabel.text = item
         }
         
         let myCompHand:(Data?, URLResponse?, Error?) -> Void = { (data, response, error) in

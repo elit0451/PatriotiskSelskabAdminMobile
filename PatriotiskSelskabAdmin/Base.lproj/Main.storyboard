@@ -262,16 +262,48 @@
                                     <action selector="selectTrialGroupClick:" destination="5FS-JL-T5H" eventType="touchUpInside" id="Frv-qP-bpg"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ps-A4-apv">
+                                <rect key="frame" x="36" y="83" width="110" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trial Group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zm9-29-OZM">
+                                <rect key="frame" x="205" y="125" width="110" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Block" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGk-DA-cyJ">
+                                <rect key="frame" x="205" y="83" width="110" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sub-Block" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10U-js-CC5">
+                                <rect key="frame" x="36" y="125" width="110" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="t3y-fm-mKE"/>
                     </view>
                     <connections>
+                        <outlet property="blockLabel" destination="kGk-DA-cyJ" id="J5K-eS-Cl9"/>
                         <outlet property="selectBlock" destination="nQI-DO-I8B" id="ATV-n0-EdZ"/>
                         <outlet property="selectSubBlock" destination="FyR-xF-Hd3" id="dql-d9-mYV"/>
                         <outlet property="selectTrialGroup" destination="eqh-5k-eVd" id="nCP-Zb-0gT"/>
                         <outlet property="selectYear" destination="psp-Jl-WFK" id="vrV-za-4wT"/>
+                        <outlet property="subBlockLabel" destination="10U-js-CC5" id="XNq-0h-zuK"/>
+                        <outlet property="trGroupLabel" destination="Zm9-29-OZM" id="d14-1l-CVj"/>
                         <outlet property="yearCollection" destination="ieB-PT-7wH" id="vz1-tw-vb2"/>
+                        <outlet property="yearLabel" destination="4ps-A4-apv" id="tf3-yA-9gk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZ1-sr-8md" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2263,6 +2295,13 @@ Trial 1 has 3 treatments - stage 10, 16, 18.  </string>
                                             <action selector="weedDropDownClick:" destination="GuD-YM-gAR" eventType="touchUpInside" id="S66-lh-8Al"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Crop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-ut-xrg">
+                                        <rect key="frame" x="227" y="24" width="110" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="headerRect" translatesAutoresizingMaskIntoConstraints="NO" id="PYy-E5-FhZ">
@@ -2370,7 +2409,7 @@ Trial 1 has 3 treatments - stage 10, 16, 18.  </string>
                                 <color key="textColor" red="0.58823529409999997" green="0.69411764710000001" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="A" adjustsFontSizeToFit="NO" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="ote-gl-sdS">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1" adjustsFontSizeToFit="NO" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="ote-gl-sdS">
                                 <rect key="frame" x="253" y="105" width="23" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.55000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2398,6 +2437,7 @@ Trial 1 has 3 treatments - stage 10, 16, 18.  </string>
                     </view>
                     <connections>
                         <outlet property="commentInput" destination="KEn-KV-aYx" id="ZKc-j5-qZR"/>
+                        <outlet property="cropLabel" destination="F8g-ut-xrg" id="VI9-AT-WjM"/>
                         <outlet property="numberInput" destination="ote-gl-sdS" id="8Il-LP-1PM"/>
                         <outlet property="productsView" destination="dCd-6a-DmY" id="2cC-ou-tmP"/>
                         <outlet property="scrollView" destination="239-LM-3HH" id="NGP-l7-Om1"/>
