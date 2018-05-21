@@ -99,7 +99,7 @@ class YearViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 cell.addSubview(subBlock)
             }
         }
-        cell.BlockChar.text = blocks[indexPath.row]["BlockChar"] as! String
+        cell.BlockChar.text = blocks[indexPath.row]["BlockChar"] as? String
         cell.addSubview(cell.BlockChar)
         
         return cell

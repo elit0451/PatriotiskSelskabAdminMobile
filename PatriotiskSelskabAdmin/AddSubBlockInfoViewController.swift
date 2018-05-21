@@ -29,6 +29,12 @@ class AddSubBlockInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if(addedSubBlock.char != "")
+        {
+            charInput.text = addedSubBlock.char
+            commentInput.text = addedSubBlock.comment
+        }
+        
         let lengthInt = addedSubBlock.length
         let widthInt = addedSubBlock.width
         lengthLbl.text = (lengthInt as NSNumber).stringValue + " m"

@@ -35,8 +35,8 @@ class SubBlockTrialGroupsViewController: UIViewController, UICollectionViewDeleg
         let cell = trialGroupsCollection.dequeueReusableCell(withReuseIdentifier: "trialGroupCell", for: indexPath) as! TrialGroupCollectionViewCell
         
         cell.trialGroupNr.text = (trialGroups[indexPath.row]["TrialGroupNr"] as! NSNumber).stringValue
-        cell.weedType.text = trialGroups[indexPath.row]["CropName"] as! String
-        cell.chemicalName.text = trialGroups[indexPath.row]["LogChemName"] as! String
+        cell.weedType.text = trialGroups[indexPath.row]["CropName"] as? String
+        cell.chemicalName.text = trialGroups[indexPath.row]["LogChemName"] as? String
         
         var logDosages = ""
         for logChemDosage in trialGroups[indexPath.row]["LogChemDosages"] as! [Decimal]{

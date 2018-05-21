@@ -27,8 +27,8 @@ class SubBlockInfoViewController: UIViewController {
         subBlockCharLabel.text = "Sub-block " +  (selectedSubBlock["SubBlockChar"] as! String)
         lengthLabel.text = (selectedSubBlock["SubBlockLength"] as! NSNumber).stringValue + " m"
         widthLabel.text = (selectedSubBlock["SubBlockWidth"] as! NSNumber).stringValue + " m"
-        areaLabel.text = (((selectedSubBlock["SubBlockLength"] as! NSNumber).intValue * (selectedSubBlock["SubBlockWidth"] as! NSNumber).intValue) as! NSNumber).stringValue + " m2"
-        commentLabel.text = selectedSubBlock["Comment"] as! String
+        areaLabel.text = (((selectedSubBlock["SubBlockLength"] as! NSNumber).intValue * (selectedSubBlock["SubBlockWidth"] as! NSNumber).intValue) as NSNumber).stringValue + " m2"
+        commentLabel.text = selectedSubBlock["Comment"] as? String
     }
 
     override func didReceiveMemoryWarning() {

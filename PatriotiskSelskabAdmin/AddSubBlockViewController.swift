@@ -68,6 +68,20 @@ class AddSubBlockViewController: UIPageViewController, UIPageViewControllerDataS
     }
     
     @IBAction func didUnwindToAddSubBlockView(_ sender: UIStoryboardSegue){
+        let trGr = (sender.source as! AddTrialGroupInfoViewController).addedTrialGroup
+        print(trGr.trialGrNumber)
+        let found = passedSubBlockObj.trialGroups.contains
+        {
+            $0.trialGrNumber == trGr.trialGrNumber
+        }
+        if(!found)
+        {
+            if(trGr.trialGrNumber != 0)
+            {
+                passedSubBlockObj.trialGroups.append(trGr)
+            }
+        }
+        (viewControllerList[1] as! AddSubBlockTrialGroupsViewController).refreshTrialGroupView()
     }
 
 }

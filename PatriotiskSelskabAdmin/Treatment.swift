@@ -24,12 +24,12 @@ class Treatment{
         self.products = [Product]()
     }
     
-    init(treatmentDate: String, treatmentStage: String, doseLog: Bool, comment: String){
+    init(treatmentDate: String, treatmentStage: String, doseLog: Bool, comment: String, products: [Product]){
         
         self.treatmentDate = treatmentDate
         self.treatmentStage = treatmentStage
         self.doseLog = doseLog
         self.comment = comment
-        self.products = [Product]()
+        self.products = products
     }
 }

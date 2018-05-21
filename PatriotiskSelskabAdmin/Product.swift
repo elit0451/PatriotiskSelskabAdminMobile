@@ -14,7 +14,7 @@ class Product{
     var dose: Decimal
     var unit: String
     
-    init(name: String, treatmentStage: String, dose: Decimal, unit: String){
+    init(name: String, dose: Decimal, unit: String){
         
         self.name = name
         self.dose = dose

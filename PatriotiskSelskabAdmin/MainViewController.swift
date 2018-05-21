@@ -8,7 +8,7 @@
 
 import UIKit
 import DropDown
-//Testing gihub
+
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     var selectedYear:String = ""
     var selectedBlock:Int = 0
@@ -240,7 +240,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
         }
         else{
-            cell.yearLbl.text = years[indexPath.row] as! String
+            cell.yearLbl.text = years[indexPath.row]
             return cell
         }
     }
@@ -251,7 +251,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let sb = UIStoryboard(name: "Main", bundle: nil)
         var vc:Any
         if(buttonClicked == true && indexPath.row == 0){
-            selectedCellYear = String((Int(years[1])! + 1))
+            selectedCellYear = "2019"//String((Int(years[1])! + 1))
             vc = sb.instantiateViewController(withIdentifier: "AddYearView") as! AddYearViewController
             (vc as! AddYearViewController).selectedYear  = selectedCellYear
         }

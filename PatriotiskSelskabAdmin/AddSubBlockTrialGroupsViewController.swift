@@ -37,7 +37,46 @@ class AddSubBlockTrialGroupsViewController: UIViewController, UICollectionViewDe
             cell = trialGroupsCollection.dequeueReusableCell(withReuseIdentifier: "addTrialGroupCell", for: indexPath) as! TrialGroupCollectionViewCell
         }
         else {
-        cell = trialGroupsCollection.dequeueReusableCell(withReuseIdentifier: "trialGroupCell", for: indexPath) as! TrialGroupCollectionViewCell
+            cell = trialGroupsCollection.dequeueReusableCell(withReuseIdentifier: "trialGroupCell", for: indexPath) as! TrialGroupCollectionViewCell
+            
+            var logChemName:String = ""
+            var logChemDosage:String = ""
+            
+            for treatment in addedSubBlock.trialGroups[indexPath.row - 1].treatments
+            {
+                var products = [Product]()
+                
+                for product in treatment.products
+                {
+                    var added = false
+                    for newProduct in products
+                    {
+                        if(newProduct.name == product.name)
+                        {
+                            if(logChemName == "")
+                            {
+                                logChemName = product.name
+                                logChemDosage += (newProduct.dose as NSNumber).stringValue + " ! " + (product.dose as NSNumber).stringValue + " ! "
+                            }
+                            else
+                            {
+                                logChemDosage += (product.dose as NSNumber).stringValue + " ! "
+                            }
+                            added = true
+                        }
+                    }
+                    if(!added)
+                    {
+                        products.append(product)
+                    }
+                }
+            }
+            
+            cell.trialGroupNr.text = (addedSubBlock.trialGroups[indexPath.row - 1].trialGrNumber as NSNumber).stringValue
+            cell.weedType.text = addedSubBlock.trialGroups[indexPath.row - 1].cropName
+            cell.dosages.text = logChemDosage
+            cell.chemicalName.text = logChemName
+            
         }
         
         cell.layer.borderWidth = 2.0
@@ -54,13 +93,33 @@ class AddSubBlockTrialGroupsViewController: UIViewController, UICollectionViewDe
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        trialGroupObj = TrialGroup()
         subBlCharTop.text = "Sub-block " + String(addedSubBlock.char).uppercased()
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let addTrialGroupView = segue.destination as? AddTrialGroupViewController else { return }
-        addTrialGroupView.passedTrialGrObj = trialGroupObj
+        if(segue.identifier == "addNewTrialGroupSegue")
+        {
+            guard let addTrialGroupView = segue.destination as? AddTrialGroupViewController else { return }
+            addTrialGroupView.passedTrialGrObj = trialGroupObj
+        }
+        else if(segue.identifier == "addTrialGroupSegue")
+        {
+            guard let addTrialGroupView = segue.destination as? AddTrialGroupViewController else { return }
+            for trGr in addedSubBlock.trialGroups
+            {
+                if(trGr.trialGrNumber == Int((sender as! TrialGroupCollectionViewCell).trialGroupNr.text!))
+                {
+                    addTrialGroupView.passedTrialGrObj = trGr
+                }
+            }
+        }
+    }
+    
+    func refreshTrialGroupView()
+    {
+        trialGroupsCollection.reloadData()
     }
     
 }

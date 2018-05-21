@@ -26,7 +26,7 @@ class AddBlockInfoViewController: UIViewController {
     @IBAction func lengthChanged(_ sender: Any) {
         guard let lengthInt = Int(length.text!) else { return }
         guard let widthInt = Int(width.text!) else { return }
-        area.text = ((widthInt * lengthInt) as! NSNumber).stringValue
+        area.text = ((widthInt * lengthInt) as NSNumber).stringValue
         addedBlock.length = lengthInt
         addedBlock.width = widthInt
     
@@ -34,7 +34,7 @@ class AddBlockInfoViewController: UIViewController {
     @IBAction func widthChanged(_ sender: Any) {
         guard let lengthInt = Int(length.text!) else { return }
         guard let widthInt = Int(width.text!) else { return }
-        area.text = ((widthInt * lengthInt) as! NSNumber).stringValue
+        area.text = ((widthInt * lengthInt) as NSNumber).stringValue
         addedBlock.length = lengthInt
         addedBlock.width = widthInt
     }
@@ -45,7 +45,15 @@ class AddBlockInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if(addedBlock.char != "")
+        {
+            blockChar.text = addedBlock.char
+            length.text = String(addedBlock.length)
+            width.text = String(addedBlock.width)
+            area.text = String(addedBlock.width * addedBlock.length)
+            comment.text = addedBlock.comment
+        }
         
     }
 

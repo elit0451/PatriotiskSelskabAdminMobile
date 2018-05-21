@@ -18,6 +18,7 @@ class AddBlockSubBlocksViewController: UIViewController {
     @IBOutlet weak var widthLbl: UITextField!
     @IBOutlet weak var subBlockRect: UIView!
     @IBOutlet weak var blockRect: UIView!
+    @IBOutlet weak var newBlockRect: UIView!
     
     @IBOutlet var panGestureRecognizer: UIPanGestureRecognizer!
     
@@ -55,12 +56,23 @@ class AddBlockSubBlocksViewController: UIViewController {
         subBlockRect.layer.borderWidth = 1.0
         subBlockRect.layer.borderColor = UIColor.init(red: 0.584, green: 0.596, blue: 0.604, alpha: 1).cgColor
         
+        refreshSubBlockRects()
         
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
+        guard let lengthInt = Int(lengthLbl.text!) else { return }
+        guard let widthInt = Int(widthLbl.text!) else { return }
+        subBlock = SubBlock()
+        subBlock.length = lengthInt
+        subBlock.width = widthInt
+        subBlock.posL = Int(subBlockRect.frame.origin.x) * addedBlock.length / Int(blockRect.frame.width)
+        subBlock.posW = Int(subBlockRect.frame.origin.y) * addedBlock.width / Int(blockRect.frame.height)
+        
         super.viewDidAppear(animated)
         blockCharTop.text = "Block " + String(addedBlock.char).uppercased()
+        
+        refreshSubBlockRects()
         
     }
     
@@ -69,7 +81,7 @@ class AddBlockSubBlocksViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     @IBAction func viewWasDragged(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: subBlockRect)
         
@@ -89,14 +101,70 @@ class AddBlockSubBlocksViewController: UIViewController {
         
         sender.setTranslation(CGPoint.zero, in: blockRect)
         
-        subBlock.posL = 0 //TODO
-        subBlock.posW = 0 //Change!
+        subBlock.posL = Int(subBlockRect.frame.origin.x) * addedBlock.length / Int(blockRect.frame.width)
+        subBlock.posW = Int(subBlockRect.frame.origin.y) * addedBlock.width / Int(blockRect.frame.height)
+    }
+    
+    func refreshSubBlockRects()
+    {
+        for subView in blockRect.subviews
+        {
+            if(subView.accessibilityIdentifier == "subBlockSubView" && subView.isHidden == false)
+            {
+                subView.removeFromSuperview()
+            }
+        }
+        for subBlock in addedBlock.subBlocks
+        {
+            let subBlockViewCopy = newBlockRect.copyView()
+            subBlockViewCopy.isHidden = false
+            
+            subBlockViewCopy.frame.origin.x = CGFloat(subBlock.posL * Int(blockRect.frame.width) / addedBlock.length)
+            subBlockViewCopy.frame.origin.y = CGFloat(subBlock.posW * Int(blockRect.frame.height) / addedBlock.width)
+            subBlockViewCopy.frame.size.width = CGFloat(subBlock.length * Int(blockRect.frame.width) / addedBlock.length)
+            subBlockViewCopy.frame.size.height = CGFloat(subBlock.width * Int(blockRect.frame.height) / addedBlock.width)
+            
+            let char = UILabel.init(frame: CGRect(x: subBlockViewCopy.bounds.width/2, y: subBlockViewCopy.bounds.height/2, width: 38, height: 32))
+            char.text = subBlock.char
+            char.textColor = UIColor.init(red:0.612, green:0.718, blue:0.631, alpha:1.0)
+            char.font = UIFont.init(name: "Verdana", size: 32.0)
+            char.center = CGPoint.init(x: subBlockViewCopy.bounds.width/2 + 8, y: subBlockViewCopy.bounds.height/2)
+            subBlockViewCopy.addSubview(char)
+            subBlockViewCopy.accessibilityIdentifier = "subBlockSubView"
+            
+            blockRect.addSubview(subBlockViewCopy)
+            
+            
+            let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.subBlockClicked (_:)))
+            subBlockViewCopy.addGestureRecognizer(gesture)
+            
+            blockRect.sendSubview(toBack: subBlockViewCopy)
+        }
+    }
+    
+    @objc func subBlockClicked(_ sender:UITapGestureRecognizer){
+        var newPassSubBlock = SubBlock()
+        for subBlock in addedBlock.subBlocks
+        {
+            if(subBlock.char == (sender.view?.subviews[0] as! UILabel).text)
+            {
+                newPassSubBlock = subBlock
+            }
+        }
+        let sb = UIStoryboard(name: "Main", bundle: nil);
+        let vc = sb.instantiateViewController(withIdentifier: "AddSubBlockView") as! AddSubBlockViewController
+        vc.passedSubBlockObj = newPassSubBlock
+        
+        
+        self.present(vc, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let addSubBlockView = segue.destination as? AddSubBlockViewController else { return }
-        
-        addSubBlockView.passedSubBlockObj = subBlock
+        if(segue.identifier == "AddSubBlockSegue")
+        {
+            guard let addSubBlockView = segue.destination as? AddSubBlockViewController else { return }
+            addSubBlockView.passedSubBlockObj = subBlock
+        }
     }
-
+    
 }

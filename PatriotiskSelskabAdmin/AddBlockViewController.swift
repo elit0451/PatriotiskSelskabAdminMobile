@@ -10,7 +10,6 @@ import UIKit
 
 class AddBlockViewController: UIPageViewController, UIPageViewControllerDataSource {
     var passedBlockObj = FieldBlock()
-    var addedBlock = FieldBlock()
     
     lazy var viewControllerList:[UIViewController] = {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -27,11 +26,11 @@ class AddBlockViewController: UIPageViewController, UIPageViewControllerDataSour
         self.dataSource = self
 
         if let secondViewController = viewControllerList.last as? AddBlockSubBlocksViewController{
-            secondViewController.addedBlock = self.addedBlock
+            secondViewController.addedBlock = self.passedBlockObj
         }
         
         if let firstViewController = viewControllerList.first as? AddBlockInfoViewController{
-            firstViewController.addedBlock = self.addedBlock
+            firstViewController.addedBlock = self.passedBlockObj
             self.setViewControllers([firstViewController], direction: .forward, animated:
                 true, completion: nil)
         }
@@ -68,6 +67,18 @@ class AddBlockViewController: UIPageViewController, UIPageViewControllerDataSour
     }
     
     @IBAction func didUnwindToAddBlockView(_ sender: UIStoryboardSegue){
+        
+        let found = passedBlockObj.subBlocks.contains
+        {
+            $0.char == (sender.source as! AddSubBlockInfoViewController).addedSubBlock.char
+        }
+        if(!found)
+        {
+            if((sender.source as! AddSubBlockInfoViewController).addedSubBlock.char != "")
+            {
+                passedBlockObj.subBlocks.append((sender.source as! AddSubBlockInfoViewController).addedSubBlock)
+            }
+        }
     }
 
 }

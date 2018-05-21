@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIView
+public extension UIView
 {
     func copyView<T: UIView>() -> T {
         return NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self)) as! T
@@ -30,8 +30,8 @@ class TrialGroupViewController: UIViewController {
         super.viewDidLoad()
         
         var frameY:CGFloat = 187
-        weedTypeLabel.text = selectedTrialGroup["CropName"] as! String
-        trGroupComment.text = selectedTrialGroup["Comment"] as! String
+        weedTypeLabel.text = selectedTrialGroup["CropName"] as? String
+        trGroupComment.text = selectedTrialGroup["Comment"] as? String
         
         var stages = [[String:Any]]()
         
@@ -42,7 +42,7 @@ class TrialGroupViewController: UIViewController {
             }
             
             if (found == false) {
-                stages.append(["Id":treatment["TreatmentID"],"StageName":treatment["TreatmentStage"], "StageDate":treatment["TreatmentDate"], "StageComment":treatment["Comment"],"Products":[[String:Any]]()])
+                stages.append(["Id":treatment["TreatmentID"] as Any,"StageName":treatment["TreatmentStage"] as Any, "StageDate":treatment["TreatmentDate"] as Any, "StageComment":treatment["Comment"] as Any,"Products":[[String:Any]]()])
             }
             var newStages = [[String:Any]]()
             for var stage in stages
@@ -66,7 +66,7 @@ class TrialGroupViewController: UIViewController {
                     
                     if (found == false)
                     {
-                        stageProducts.append(["ProductName":treatment["ProductName"],"Dosage":dose])
+                        stageProducts.append(["ProductName":treatment["ProductName"] as Any,"Dosage":dose as Any])
                     }
                 }
                 stage["Products"] = stageProducts
@@ -84,7 +84,7 @@ class TrialGroupViewController: UIViewController {
         }
         
         for stage in stages{
-            var stageViewCopy = stageView.copyView()
+            let stageViewCopy = stageView.copyView()
             stageViewCopy.isHidden = false
             stageViewCopy.frame.origin.x = 0
             stageViewCopy.frame.origin.y = frameY
@@ -101,7 +101,7 @@ class TrialGroupViewController: UIViewController {
             frameY += stageViewCopy.frame.size.height
             for product in stage["Products"] as! [[String:Any]]
             {
-                var chemicalViewCopy = chemicalView.copyView()
+                let chemicalViewCopy = chemicalView.copyView()
                 chemicalViewCopy.isHidden = false
                 chemicalViewCopy.frame.origin.x = 0
                 chemicalViewCopy.frame.origin.y = frameY
@@ -117,7 +117,7 @@ class TrialGroupViewController: UIViewController {
                 frameY += chemicalViewCopy.frame.size.height
                     
             }
-            var treatmentCommentViewCopy = treatmentCommentView.copyView()
+            let treatmentCommentViewCopy = treatmentCommentView.copyView()
             treatmentCommentViewCopy.isHidden = false
             treatmentCommentViewCopy.frame.origin.x = 0
             treatmentCommentViewCopy.frame.origin.y = frameY

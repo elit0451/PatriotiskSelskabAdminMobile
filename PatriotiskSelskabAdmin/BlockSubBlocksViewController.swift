@@ -25,8 +25,8 @@ class BlockSubBlocksViewController: UIViewController {
         subBlock.layer.borderWidth = 1
         self.view.addSubview(subBlock)
         
-        var cellWidth = (subBlock.bounds.width as! NSNumber).intValue
-        var cellHeight = (subBlock.bounds.height as! NSNumber).intValue
+        let cellWidth = (subBlock.bounds.width as NSNumber).intValue
+        let cellHeight = (subBlock.bounds.height as NSNumber).intValue
         
         for sBlock in subBlocks {
             let subBlockChar = sBlock["SubBlockChar"] as! String

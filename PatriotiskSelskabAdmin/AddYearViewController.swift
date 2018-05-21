@@ -41,10 +41,7 @@ class AddYearViewController: UIViewController, UICollectionViewDelegate, UIColle
         cell.backgroundColor = UIColor.init(red: 0.945, green: 1, blue: 0.953, alpha: 1)
         cell.layer.borderColor = UIColor.init(red: 0.416, green: 0.745, blue: 0.953, alpha: 1).cgColor
         
-        if(indexPath.row != 0)
-        {
-            cell.BlockChar.text = fieldBlocks[indexPath.row].char
-        }
+        cell.BlockChar.text = fieldBlocks[indexPath.row].char
         
         return cell
     }
@@ -61,21 +58,32 @@ class AddYearViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let index = blockCollection.indexPath(for: sender as! UICollectionViewCell)?.row
-         guard let addBlockView = segue.destination as? AddBlockViewController else { return }
-        
-        if(index == 0){
-            addBlockView.passedBlockObj = blockObj
+        if(segue.identifier == "addBlockSegue")
+        {
+            let index = blockCollection.indexPath(for: sender as! UICollectionViewCell)?.row
+             guard let addBlockView = segue.destination as? AddBlockViewController else { return }
+            
+            if(index == 0){
+                blockObj = FieldBlock()
+                blockObj.year = selectedYear
+                addBlockView.passedBlockObj = blockObj
+            }
+            else{
+                addBlockView.passedBlockObj = fieldBlocks[index!]
+            }
         }
-        else{
-            addBlockView.passedBlockObj = fieldBlocks[index! - 1]
-        }
-        
     }
     
     @IBAction func didUnwindToAddYearView(_ sender: UIStoryboardSegue){
         
-        fieldBlocks.append((sender.source as! AddBlockInfoViewController).addedBlock)
+        let found = fieldBlocks.contains
+        {
+            $0.char == (sender.source as! AddBlockInfoViewController).addedBlock.char
+        }
+        if(!found)
+        {
+            fieldBlocks.append((sender.source as! AddBlockInfoViewController).addedBlock)
+        }
         blockCollection.reloadData()
     }
     

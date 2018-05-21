@@ -27,8 +27,8 @@ class BlockInfoViewController: UIViewController {
         blockCharLabel.text = "Block " +  (selectedBlock["BlockChar"] as! String)
         lengthLabel.text = (selectedBlock["FieldBlockLength"] as! NSNumber).stringValue + " m"
         widthLabel.text = (selectedBlock["FieldBlockWidth"] as! NSNumber).stringValue + " m"
-        areaLabel.text = (((selectedBlock["FieldBlockLength"] as! NSNumber).intValue * (selectedBlock["FieldBlockWidth"] as! NSNumber).intValue) as! NSNumber).stringValue + " m2"
-        commentLabel.text = selectedBlock["Comment"] as! String
+        areaLabel.text = (((selectedBlock["FieldBlockLength"] as! NSNumber).intValue * (selectedBlock["FieldBlockWidth"] as! NSNumber).intValue) as NSNumber).stringValue + " m2"
+        commentLabel.text = selectedBlock["Comment"] as? String
     }
 
     override func didReceiveMemoryWarning() {

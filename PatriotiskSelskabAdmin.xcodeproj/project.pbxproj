@@ -151,7 +151,6 @@
 				3A3EA95320A9AD37005DA17E /* SubBlockViewController.swift */,
 				3A7C51E420AD7D3600871837 /* SubBlockInfoViewController.swift */,
 				3A7C51E620AD7D4D00871837 /* SubBlockTrialGroupsViewController.swift */,
-				3A7C51E820AD871500871837 /* TrialGroupCollectionViewCell.swift */,
 				3A3EA95520A9AD49005DA17E /* TrialGroupViewController.swift */,
 				3AF8AFDD20A5DFB300D495B7 /* Main.storyboard */,
 				3AD1C09920B0466E00897AAF /* FieldBlock.swift */,
@@ -175,6 +174,7 @@
 				3A3EA95B20A9AD9A005DA17E /* AddTrialGroupViewController.swift */,
 				3A7C51EA20ADC72D00871837 /* AddTrialGroupInfoViewController.swift */,
 				3AD1C0AB20B0AEF100897AAF /* AddTreatmentViewController.swift */,
+				3A7C51E820AD871500871837 /* TrialGroupCollectionViewCell.swift */,
 				3A3EA98420A9F474005DA17E /* yearCollectionViewCell.swift */,
 				3A3EA98820AA05CD005DA17E /* BlockCollectionViewCell.swift */,
 			);
